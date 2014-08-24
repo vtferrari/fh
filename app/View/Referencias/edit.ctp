@@ -1,8 +1,8 @@
-<!-- File: /app/View/Posts/edit.ctp -->
+<!-- File: /app/View/Referencias/edit.ctp -->
 
 <h1>Edit Post</h1>
 <?php
-    echo $this->Form->create('Post', array('action' => 'edit'));
+    echo $this->Form->create('Referencia', array('action' => 'edit'));
     echo $this->Form->input('title');
     echo $this->Form->input('body', array('rows' => '3'));
     echo $this->Form->input('id', array('type' => 'hidden'));

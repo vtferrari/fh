@@ -1,8 +1,8 @@
 <?php
 
-class Post extends AppModel {
-    public $name = 'Post';
+class Referencia extends AppModel {
 
+    public $name = 'Referencia';
     public $validate = array(
         'title' => array(
             'rule' => 'notEmpty'
@@ -11,7 +11,7 @@ class Post extends AppModel {
             'rule' => 'notEmpty'
         )
     );
-    public function isOwnedBy($post, $user) {
-    return $this->field('id', array('id' => $post, 'user_id' => $user)) === $post;
-}
+
+
+
 }

@@ -45,13 +45,13 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                     ?>
                     <ul class="nav navbar-top-links navbar-right">
                         <li class="dropdown">
-                            <?php echo $this->Html->link(
-                                    '<i class="fa fa-sign-out fa-fw"></i> Logout', 
-                                    array('controller'=>'users', 'action' => 'logout'),
-                                    array('escape' => false)
-                                    ); ?>
-                            
-                            
+                            <?php
+                            echo $this->Html->link(
+                                    '<i class="fa fa-sign-out fa-fw"></i> Logout', array('controller' => 'users', 'action' => 'logout'), array('escape' => false)
+                            );
+                            ?>
+
+
                         </li>
                     </ul>
 
@@ -59,11 +59,11 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                         <div class="sidebar-nav navbar-collapse">
                             <ul class="nav" id="side-menu">
                                 <li>
-                                    <?php echo $this->Html->link(
-                                    '<i class="fa fa-dashboard fa-fw"></i> Dashboard', 
-                                    array('controller'=>'associados', 'action' => 'index'),
-                                    array('escape' => false)
-                                    ); ?>
+                                    <?php
+                                    echo $this->Html->link(
+                                            '<i class="fa fa-dashboard fa-fw"></i> Dashboard', array('controller' => 'associados', 'action' => 'index'), array('escape' => false)
+                                    );
+                                    ?>
                                 </li>
                             </ul>
                         </div>
@@ -87,6 +87,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
         echo $this->Html->script('raphael.min');
         echo $this->Html->script('sb-admin-2');
         echo $this->fetch('script');
+        echo $this->Html->script(array('jquery.mask.min', 'jquery.mask.useful.min', 'jquery.jsonp-2.4.0.min', 'cep-auto-completar.min'));
         ?>
 
     </body>

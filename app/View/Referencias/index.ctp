@@ -1,4 +1,4 @@
-<!-- File: /app/View/Posts/index.ctp -->
+<!-- File: /app/View/Referencias/index.ctp -->
 
 <h1>Blog posts</h1>
 <p><?php echo $this->Html->link('Add Post', array('action' => 'add')); ?></p>
@@ -13,19 +13,19 @@
     <!-- Aqui é onde nós percorremos nossa matriz $posts, imprimindo
     as informações dos posts -->
 
-    <?php foreach ($posts as $post): ?>
+    <?php foreach ($referencias as $referencia): ?>
         <tr>
-            <td><?php echo $post['Post']['id']; ?></td>
+            <td><?php echo $referencia['Referencia']['id']; ?></td>
             <td>
-                <?php echo $this->Html->link($post['Post']['title'], array('action' => 'view', $post['Post']['id'])); ?>
+                <?php echo $this->Html->link($referencia['Referencia']['title'], array('action' => 'view', $referencia['Referencia']['id'])); ?>
             </td>
             <td>
                 <?php
                 echo $this->Form->postLink(
-                        'Delete', array('action' => 'delete', $post['Post']['id']), array('confirm' => 'Are you sure?'));
+                        'Delete', array('action' => 'delete', $referencia['Referencia']['id']), array('confirm' => 'Are you sure?'));
                 ?>
             </td>
-            <td><?php echo $post['Post']['created']; ?></td>
+            <td><?php echo $referencia['Referencia']['created']; ?></td>
         </tr>
     <?php endforeach; ?>
 
