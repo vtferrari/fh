@@ -1,43 +1,71 @@
 <!-- File: /app/View/Associados/index.ctp -->
 
 <h1>Associados</h1>
-<div class="input-group custom-search-form">
-    <?php 
-    echo $this->Form->create('Associado', array('action' => 'index'));
-    echo $this->Form->input('nome', array('class' => 'form-control', 'div' => array('class' => 'form-group col-sm-4')));
-    ?>
-    <span class="input-group-btn">
-        <?php echo $this->Form->end(array('label'=>'buscar','class'=>'btn btn-primary')); ?>
-    </span>
+
+<hr/>
+<div class="form-group">
+    <form action="/FraternidadeHumana/associados" id="AssociadoIndexForm" method="post" accept-charset="utf-8">
+        <div class="input-group custom-search-form">
+            <div style="display:none;">
+                <input type="hidden" name="_method" value="POST">
+            </div>  
+            <input type="text" class="form-control" placeholder="Buscar..." name="data[Associado][nome]" id="AssociadoNome">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="submit">
+                    <i class="fa fa-search"></i>
+                </button>
+            </span>
+        </div>
+    </form>
 </div>
-<?php echo $this->Html->link('<i class="fa fa-plus"></i> Novo Membro', array('action' => 'add'), array('class' => 'btn btn-primary', 'escape' => false)); ?>
-<table class="table table-striped">
-    <tr>
-        <th>Id</th>
-        <th>Nome</th>
-        <th>Actions</th>
-    </tr>
 
-    <!-- Aqui é onde nós percorremos nossa matriz $posts, imprimindo
-    as informações dos posts -->
+<div class="form-group clearfix">
+    <?php
+    $divFormGroup = array('class' => 'btn btn-primary pull-right ', 'escape' => false);
+    echo $this->Html->link('<i class="fa fa-plus"></i> Novo Membro', array('action' => 'add'), $divFormGroup);
+    ?>
+</div>
 
-    <?php foreach ($associados as $associado): ?>
+<div class="panel panel-default">
+    <div class="panel-heading">Membros Associados</div>
+
+    <table class="table table-striped">
         <tr>
-            <td><?php echo $associado['Associado']['id']; ?></td>
-            <td>
-                <?php echo $this->Html->link($associado['Associado']['nome'], array('action' => 'view', $associado['Associado']['id'])); ?>
-            </td>
-            <td>
-                <?php
-                echo $this->Form->postLink(
-                        'Delete', array('action' => 'delete', $associado['Associado']['id']), array('confirm' => 'Are you sure?'));
-                ?>
-                <?php
-                echo $this->Html->link(
-                        'Edit', array('action' => 'edit', $associado['Associado']['id']));
-                ?>
-            </td>
+            <th>Nº</th>
+            <th>Nome</th>
+            <th>Telefone</th>
+            <th>Celular</th>
+            <th>Cidade</th>
+            <th>Actions</th>
         </tr>
-    <?php endforeach; ?>
+        <?php foreach ($associados as $associado): ?>
+            <tr>
+                <td><?php echo $associado['Associado']['id']; ?></td>
+                <td>
+                    <?php echo $this->Html->link($associado['Associado']['nome'] . " " . $associado['Associado']['sobrenome'], array('action' => 'view', $associado['Associado']['id'])); ?>
+                </td>
+                <td><?php echo $associado['Associado']['telefone']; ?></td>
+                <td><?php echo $associado['Associado']['celular']; ?></td>
+                <td><?php echo $associado['Associado']['cidade']; ?></td>
+                <td>
+                    <?php
+                    echo $this->Form->postLink(
+                            '<i class="fa fa-trash-o"></i> Remover', 
+                            array('action' => 'delete', $associado['Associado']['id']), 
+                            array('class' => 'btn btn-default', 'escape' => false),
+                            array('confirm' => 'Deseja excluir este registro?')
+                            );
+                    ?>
+                    <?php
+                    echo $this->Html->link(
+                            '<i class="fa fa-edit"></i> Editar' , 
+                            array('action' => 'edit', $associado['Associado']['id']) ,
+                            array('class' => 'btn btn-default', 'escape' => false)
+                            );
+                    ?>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
 
-</table>
+</div>

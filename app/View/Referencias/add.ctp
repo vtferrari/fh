@@ -1,9 +1,23 @@
 <!-- File: /app/View/Referencias/add.ctp -->
 
-<h1>Add Post</h1>
-<?php
-echo $this->Form->create('Referencia');
-echo $this->Form->input('title');
-echo $this->Form->input('body', array('rows' => '3'));
-echo $this->Form->input('associado_id',array('type'=>'hidden'));
-echo $this->Form->end('Save Post');
+<h1>Referencias</h1>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">Referencias</div>
+    <div class="panel-body">
+        <?php
+        $divFormGroup = array('class' => 'form-control', 'div' => array('class' => 'form-group col-sm-4'));
+        echo $this->Form->create('Referencia', array('action' => 'add'));
+        echo $this->Form->input('nome', $divFormGroup);
+        echo $this->Form->input('telefone', array('class' => 'form-control mask-8or9digitsPhone') + $divFormGroup);
+        echo $this->Form->input('observacao', $divFormGroup);
+        echo $this->Form->input('associado_id', array('type' => 'hidden'));
+        ?>
+        <div class="form-group col-sm-12">
+            <?php echo $this->Form->end(array('label' => 'Salvar', 'class' => 'btn btn-primary')); ?>
+        </div>
+    </div>
+</div>
+
+
